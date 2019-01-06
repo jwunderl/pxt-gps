@@ -44,14 +44,14 @@ namespace gps {
 
         for (let i = 0; i < input.length; ++i) {
             const code = input.charCodeAt(i) | lowerCaseMask;
-            let val: number;
+            let val = -1;
 
             if (code >= numberOffset && code < numberOffset + 10)
                 val = code - numberOffset;
             else if (code >= letterOffset && code < letterOffset + 26)
                 val = 10 + code - letterOffset;
 
-            if (val == undefined || val >= radix)
+            if (val == -1 || val >= radix)
                 break;
             output = output * radix + val;
         }
